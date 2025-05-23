@@ -1,0 +1,248 @@
+/**
+ * J-Archive Extension Styles
+ * Notification overlay UI for universal archive finder
+ */
+
+/* Notification Container */
+.j-archive-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999999;
+  max-width: 350px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.j-archive-notification-visible {
+  transform: translateX(0);
+}
+
+.j-archive-notification-closing {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in;
+}
+
+/* Notification Content */
+.j-archive-notification-content {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.j-archive-notification-content.j-archive-success {
+  border-color: #10b981;
+}
+
+.j-archive-notification-content.j-archive-error {
+  border-color: #ef4444;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .j-archive-notification-content {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .j-archive-notification-content.j-archive-success {
+    border-color: #059669;
+  }
+  
+  .j-archive-notification-content.j-archive-error {
+    border-color: #dc2626;
+  }
+}
+
+/* Header */
+.j-archive-notification-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-notification-header {
+    background: #111827;
+    border-bottom-color: #374151;
+  }
+}
+
+.j-archive-notification-icon {
+  font-size: 18px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.j-archive-notification-title {
+  font-weight: 600;
+  font-size: 16px;
+  flex: 1;
+  color: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-notification-title {
+    color: #f9fafb;
+  }
+}
+
+.j-archive-notification-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.j-archive-notification-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-notification-close {
+    color: #9ca3af;
+  }
+  
+  .j-archive-notification-close:hover {
+    background: #374151;
+    color: #d1d5db;
+  }
+}
+
+/* Body */
+.j-archive-notification-body {
+  padding: 16px;
+}
+
+.j-archive-notification-body p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-notification-body p {
+    color: #d1d5db;
+  }
+}
+
+/* Button */
+.j-archive-notification-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.j-archive-notification-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.j-archive-notification-btn:active {
+  transform: translateY(0);
+}
+
+.j-archive-btn-success {
+  background: #10b981;
+}
+
+.j-archive-btn-success:hover {
+  background: #059669;
+}
+
+/* Spinning animation for loading state */
+.j-archive-spinning {
+  animation: j-archive-spin 1s linear infinite;
+}
+
+@keyframes j-archive-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success state styling */
+.j-archive-success .j-archive-notification-header {
+  background: #ecfdf5;
+  border-bottom-color: #a7f3d0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-success .j-archive-notification-header {
+    background: #022c22;
+    border-bottom-color: #047857;
+  }
+}
+
+/* Error state styling */
+.j-archive-error .j-archive-notification-header {
+  background: #fef2f2;
+  border-bottom-color: #fecaca;
+}
+
+@media (prefers-color-scheme: dark) {
+  .j-archive-error .j-archive-notification-header {
+    background: #2d1b1b;
+    border-bottom-color: #b91c1c;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .j-archive-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .j-archive-notification {
+    transition: none;
+  }
+  
+  .j-archive-notification-visible,
+  .j-archive-notification-closing {
+    transition: none;
+  }
+  
+  .j-archive-spinning {
+    animation: none;
+  }
+} 
+

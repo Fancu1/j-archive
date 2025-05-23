@@ -1,0 +1,17 @@
+{
+  "name": "j-archive-chrome-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension to automatically find archive.ph cached versions of Medium articles",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.254",
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+} 
